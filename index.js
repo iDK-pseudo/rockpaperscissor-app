@@ -1,49 +1,52 @@
+var userScore = 0 , computerScore = 0;
+
 function computerPlay () {
-    var options = ["Rock","Paper","Scissor"]
+    let options = ["Rock","Paper","Scissor"]
     return options[Math.floor(Math.random() * 3)];
 }
 
-
-function letsPlay(user = computerPlay(),computer = computerPlay()){
-    var userChoice = user.toLowerCase(),computerChoice = computer.toLowerCase();
-    console.log("User : ",userChoice," Computer : ",computerChoice);
+function letsPlay(user,computer = computerPlay()){
+    let userChoice = user.toLowerCase().trim(),computerChoice = computer.toLowerCase();
+    const h4 = document.querySelector("#computerChoice");
+    h4.textContent = "Computer Chose : " + computerChoice;
     if(userChoice === "rock"){
         if(computerChoice === "paper")
-            return "Computer Wins";
+            return "Computer";
          else if(computerChoice === "scissor")
-            return "User Wins";
+            return "User";
          else
             return "Draw";
     }else if(userChoice === "paper"){
         if(computerChoice === "rock")
-            return "User Wins";
+            return "User";
          else if(computerChoice === "scissor")
-            return "Computer Wins";
+            return "Computer";
          else
             return "Draw";
     }else if(userChoice === "scissor"){
         if(computerChoice === "rock")
-            return "Computer Wins";
+            return "Computer";
          else if(computerChoice === "paper")
-            return "User Wins";
+            return "User";
          else
             return "Draw";
     }
 }
 
-function game(){
-    let scoreUser = 0, scoreComputer = 0;
-    for(let i = 0 ; i < 5 ; i ++ ){
-        let verdict = letsPlay();
-         if(verdict=== "User Wins"){
-             scoreUser++;
-         }else if(verdict==="Computer Wins"){
-             scoreComputer++;
-         };
+function onClick (oEvent) {
+    let result = letsPlay(oEvent.textContent);
+    if(result === "User"){
+        const td = document.querySelector("#userScore");
+        td.textContent = ++userScore;
+    }else if(result === "Computer"){
+        const td = document.querySelector("#computerScore");
+        td.textContent = ++computerScore;
     }
 
-    console.log("User Score ",scoreUser);
-    console.log("Computer Score ",scoreComputer);
-}
+    if(userScore === 5){
+        alert("User Wins !");
+    }else if(computerScore ===5){
+        alert("Computer Wins");
+    }
 
-game();
+}

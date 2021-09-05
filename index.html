@@ -3,5 +3,28 @@
 <html>
     <head>
         <script src = "index.js"></script>
+        <style>
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+        </style>
     </head>
+    <body>
+        <button onclick = "onClick(this)"> Rock </button>
+        <button onclick = "onClick(this)"> Paper </button>
+        <button onclick = "onClick(this)"> Scissor </button>
+        <h4 id="computerChoice"> Computer Chose : </h4>
+        <table>
+            <tr>
+                <th>User Score</th>
+                <th>Computer Score</th>
+            </tr>
+            <tr>
+                <td id ="userScore">0</td>
+                <td id = "computerScore">0</td>
+            </tr>
+        </table>
+    </body>
 </html>
